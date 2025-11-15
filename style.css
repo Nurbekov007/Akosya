@@ -1,0 +1,116 @@
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffd6e7;
+            font-family: "Arial", sans-serif;
+            overflow: hidden;
+        }
+
+        /* Центрирование */
+        .center {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Экран пароля */
+        #password-screen {
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        #password-input {
+            padding: 12px 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        #enter-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 20px;
+            background: #ff8fb2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Основная открытка */
+        #card {
+            display: none;
+            text-align: center;
+            animation: fadeIn 1.3s ease;
+        }
+
+        #love-img {
+            width: 70%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 100, 150, 0.5);
+        }
+
+        #text {
+            margin-top: 20px;
+            font-size: 36px;
+            color: #ff477e;
+            font-weight: bold;
+            opacity: 0;
+            animation: appear 2s forwards;
+            animation-delay: 0.7s;
+        }
+
+        /* Сюрприз кнопка */
+        #more-btn {
+            margin-top: 25px;
+            padding: 14px 30px;
+            font-size: 22px;
+            background: #ff6f9e;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Экран сюрприза */
+        #surprise {
+            display: none;
+            font-size: 40px;
+            color: #ff2e63;
+            text-shadow: 0 0 10px rgba(255, 50, 100, 0.6);
+            animation: fadeIn 1s ease;
+        }
+
+        /* Летающие сердечки */
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            font-size: 20px;
+            color: #ff2e63;
+            animation: floatUp 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+            100% { transform: translateY(-120vh) translateX(30px); opacity: 0; }
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>

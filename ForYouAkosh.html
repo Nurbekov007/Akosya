@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffd6e7;
+            font-family: "Arial", sans-serif;
+            overflow: hidden;
+        }
+
+        /* Центрирование */
+        .center {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Экран пароля */
+        #password-screen {
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        #password-input {
+            padding: 12px 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        #enter-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 20px;
+            background: #ff8fb2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Основная открытка */
+        #card {
+            display: none;
+            text-align: center;
+            animation: fadeIn 1.3s ease;
+        }
+
+        #love-img {
+            width: 70%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 100, 150, 0.5);
+        }
+
+        #text {
+            margin-top: 20px;
+            font-size: 36px;
+            color: #ff477e;
+            font-weight: bold;
+            opacity: 0;
+            animation: appear 2s forwards;
+            animation-delay: 0.7s;
+        }
+
+        /* Сюрприз кнопка */
+        #more-btn {
+            margin-top: 25px;
+            padding: 14px 30px;
+            font-size: 22px;
+            background: #ff6f9e;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Экран сюрприза */
+        #surprise {
+            display: none;
+            font-size: 40px;
+            color: #ff2e63;
+            text-shadow: 0 0 10px rgba(255, 50, 100, 0.6);
+            animation: fadeIn 1s ease;
+        }
+
+        /* Летающие сердечки */
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            font-size: 20px;
+            color: #ff2e63;
+            animation: floatUp 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+            100% { transform: translateY(-120vh) translateX(30px); opacity: 0; }
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Music -->
+    <!-- Заменишь "music.mp3" на свою музыку -->
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Летающие сердечки -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 400);
+    </script>
+
+    <!-- Пароль -->
+    <div id="password-screen" class="center">
+        <h2>Введите пароль 💗</h2>
+        <input id="password-input" placeholder="XX.XX ?">
+        <button id="enter-btn">Войти</button>
+        <p id="error" style="color: red; margin-top:10px;"></p>
+    </div>
+
+    <!-- Открытка -->
+    <div id="card" class="center">
+        <img id="love-img" src="Изображение WhatsApp 2025-11-15 в 21.04.00_3a599e86.jpg">
+        <div id="text">Я очень сильно тебя люблю ❤️</div>
+        <button id="more-btn">Нажми меня 💞</button>
+    </div>
+
+    <!-- Сюрприз -->
+    <div id="surprise" class="center">
+        💗 Я сильно скучаю акош люблю тебя очень сильно жаным 🥹 💗  
+        <br><br>  
+    </div>
+
+    <script>
+        const music = document.getElementById("bg-music");
+
+        document.getElementById("enter-btn").onclick = function () {
+            let pass = document.getElementById("password-input").value.trim();
+
+            if (pass === "23.05") {
+                document.getElementById("password-screen").style.display = "none";
+                document.getElementById("card").style.display = "flex";
+
+                // музыка стартует
+                music.play();
+
+                // показать кнопку через 2 секунды
+                setTimeout(() => {
+                    document.getElementById("more-btn").style.display = "block";
+                }, 2000);
+
+            } else {
+                document.getElementById("error").textContent = "Неверный пароль!";
+            }
+        };
+
+        document.getElementById("more-btn").onclick = function () {
+            document.getElementById("card").style.display = "none";
+            document.getElementById("surprise").style.display = "flex";
+        };
+    </script>
+
+</body>
+</html>
